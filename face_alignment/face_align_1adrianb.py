@@ -2,7 +2,7 @@
 # @Time : 2021/11/18
 # @Author : ykk648
 # @Project : https://github.com/ykk648/AI_power
-from face_lib.face_detect_and_align import FaceAlignment, LandmarksType
+from .face_alignment_1adrianb import FaceAlignment, LandmarksType
 from skimage import io
 import matplotlib.pyplot as plt
 import collections

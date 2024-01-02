@@ -67,6 +67,13 @@ class FaceAlignmentAPI:
             bbox = bboxes
             kp = kpss
 
+        # # for talking head
+        # if only_roi:
+        #     roi, roi_box, roi_kpss = apply_roi_func(image, bbox, kp, pad_ratio=pad_ratio)
+        #     roi = CVImage(roi).resize_keep_ratio(self.crop_size)[0]
+        #     roi = cv2.cvtColor(roi, cv2.COLOR_RGB2BGR)
+        #     return roi, roi_box, None
+
         if apply_roi:
             roi, roi_box, roi_kpss = apply_roi_func(image, bbox, kp, pad_ratio=pad_ratio)
             align_img, mat_rev, kpss_new = self.norm_crop(roi, roi_kpss, self.crop_size, mode=self.mode)
@@ -76,3 +83,30 @@ class FaceAlignmentAPI:
             align_img, mat_rev, kpss_new = self.norm_crop(image, kp, self.crop_size, mode=self.mode)
             align_img = CVImage(align_img).rgb()
             return align_img, mat_rev, None
+
+    def align_multi_face(self, image_in, bboxes, kpss, apply_roi=False, pad_ratio=0):
+        """
+        Args:
+            crop_size:
+            apply_roi:
+            pad_ratio:
+        Returns:
+        """
+        if bboxes.shape[0] == 0:
+            return None, None, None
+        align_img_list = []
+        mat_rev_list = []
+        roi_box_list = []
+        for i in range(bboxes.shape[0]):
+            if kpss is not None:
+                if apply_roi:
+                    roi, roi_box, roi_kpss = apply_roi_func(image_in, bboxes[i], kpss[i], pad_ratio=pad_ratio)
+                    align_img, mat_rev, _ = self.norm_crop(roi, roi_kpss, self.crop_size, mode=self.mode)
+                else:
+                    align_img, mat_rev, _ = self.norm_crop(image_in, kpss[i], self.crop_size, mode=self.mode)
+                align_img = cv2.cvtColor(align_img, cv2.COLOR_RGB2BGR)
+                align_img_list.append(align_img)
+                mat_rev_list.append(mat_rev)
+                if apply_roi:
+                    roi_box_list.append(roi_box)
+        return align_img_list, mat_rev_list, roi_box_list
