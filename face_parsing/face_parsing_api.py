@@ -1,7 +1,7 @@
 # -- coding: utf-8 --
 # @Time : 2021/11/25
 # @Author : ykk648
-# @Project : https://github.com/ykk648/AI_power
+
 """
 https://github.com/zllrunning/face-parsing.PyTorch
 """

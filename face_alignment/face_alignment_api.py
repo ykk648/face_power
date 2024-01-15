@@ -1,7 +1,7 @@
 # -- coding: utf-8 --
 # @Time : 2023/12/26
 # @Author : ykk648
-# @Project : https://github.com/ykk648/face_lib
+
 from cv2box import CVImage
 import cv2
 import numpy as np
@@ -9,7 +9,7 @@ from .utils import area_center_filter, estimate_norm, apply_roi_func
 
 
 class FaceAlignmentAPI:
-    def __init__(self, crop_size=256, mode='mtcnn_512', smooth_m=False, smooth_window=5):
+    def __init__(self, crop_size=256, mode='mtcnn_256', smooth_m=False, smooth_window=5):
         """
         :param crop_size: align face size
         :param mode: norm estimate mode

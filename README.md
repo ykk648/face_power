@@ -2,7 +2,9 @@
 
 Separate from [AI_power](https://github.com/ykk648/AI_power), consists methods/onnx-models for face related missions.
 
-Examples can be find in [examples](./examples).
+Examples can be found in [examples](./examples).
+
+Models can be found in [huggingface](https://huggingface.co/ykk648/face_lib).
 
 ---
 
@@ -50,6 +52,12 @@ Examples can be find in [examples](./examples).
 - [FaceFusion](https://modelscope.cn/models/damo/cv_unet-image-face-fusion_damo/)
 - [Hififace](https://johann.wang/HifiFace/)
 - [InSwapper](https://github.com/deepinsight/insightface)
+
+---
+
+### Head Pose
+
+- [WHENet](https://github.com/Ascend-Research/HeadPoseEstimation-WHENet)
 
 ---
 

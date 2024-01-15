@@ -1,7 +1,7 @@
 # -- coding: utf-8 --
 # @Time : 2023/12/26
 # @Author : ykk648
-# @Project : https://github.com/ykk648/face_lib
+
 import cv2
 import numpy as np
 from skimage import transform as trans
@@ -75,7 +75,8 @@ multi_src_remove_eye = np.array([[
 ])
 multi_src_map_th = {256: multi_src_th / 2, 512: multi_src_th}
 multi_src_map_th_close = {256: multi_src_th_close / 2, 512: multi_src_th_close}
-multi_src_map_remove_eye = {256: multi_src_remove_eye, 512: multi_src_remove_eye*2}
+multi_src_map_remove_eye = {256: multi_src_remove_eye, 512: multi_src_remove_eye * 2}
+
 
 def get_src_modify(srcs, arcface_src):
     srcs += ((arcface_src[2] - srcs[2][2]) * np.array([1, 1.8]))[None]
@@ -116,8 +117,8 @@ def estimate_norm(lmk, image_size=112, mode='arcface'):
         src = multi_src_map_th_close[image_size]
     elif mode == 'multi_src_map_remove_eye':
         src = multi_src_map_remove_eye[image_size]
-        lmk[3:,0]=sum(lmk[3:,0])/2
-        lmk[3:,1]=sum(lmk[3:,1])/2
+        lmk[3:, 0] = sum(lmk[3:, 0]) / 2
+        lmk[3:, 1] = sum(lmk[3:, 1]) / 2
         lmk_tran = np.insert(lmk, 2, values=np.ones(5), axis=1)
     else:
         src = multi_src_map[image_size]
