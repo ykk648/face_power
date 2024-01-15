@@ -8,6 +8,18 @@ Models can be found in [huggingface](https://huggingface.co/ykk648/face_lib).
 
 ---
 
+### Eye Detect
+
+- eye open detect from [Open-eye-closed-eye-classification](https://github.com/abhilb/Open-eye-closed-eye-classification)
+- iris detect from [iris-detection](https://github.com/Kazuhito00/iris-detection-using-py-mediapipe)
+
+
+### Face 3D
+
+- [Deep3DFaceRecon_pytorch](https://github.com/sicxu/Deep3DFaceRecon_pytorch)
+- [3dRecon](https://modelscope.cn/models/damo/cv_unet-image-face-fusion_damo/summary)
+
+
 ### Face Attribution
 
 - based on [mmclassification](https://github.com/open-mmlab/mmclassification), already convert to onnx.
@@ -53,7 +65,6 @@ Models can be found in [huggingface](https://huggingface.co/ykk648/face_lib).
 - [Hififace](https://johann.wang/HifiFace/)
 - [InSwapper](https://github.com/deepinsight/insightface)
 
----
 
 ### Head Pose
 
