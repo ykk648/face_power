@@ -58,6 +58,7 @@ Models can be found in [huggingface](https://huggingface.co/ykk648/face_lib).
 - [GFPGAN](https://github.com/TencentARC/GFPGAN) onnx converted
 - [RestoreFormer](https://github.com/wzhouxiff/RestoreFormer)
 - [CodeFormer](https://github.com/sczhou/CodeFormer)
+- ESRGAN etc. TODO
 
 ### Face Swap
 
