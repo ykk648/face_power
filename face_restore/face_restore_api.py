@@ -1,7 +1,6 @@
 # -- coding: utf-8 --
 # @Time : 2021/11/17
 # @Author : ykk648
-# @Project : https://github.com/ykk648/AI_power
 
 import cv2
 from cv2box import CVImage

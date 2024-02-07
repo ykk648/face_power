@@ -58,7 +58,6 @@ Models can be found in [huggingface](https://huggingface.co/ykk648/face_lib).
 - [GFPGAN](https://github.com/TencentARC/GFPGAN) onnx converted
 - [RestoreFormer](https://github.com/wzhouxiff/RestoreFormer)
 - [CodeFormer](https://github.com/sczhou/CodeFormer)
-- ESRGAN etc. TODO
 
 ### Face Swap
 
@@ -70,6 +69,12 @@ Models can be found in [huggingface](https://huggingface.co/ykk648/face_lib).
 ### Head Pose
 
 - [WHENet](https://github.com/Ascend-Research/HeadPoseEstimation-WHENet)
+
+
+### Mouth Open Detect
+
+- Mouth Open/Close Detect, private model
+
 
 ---
 

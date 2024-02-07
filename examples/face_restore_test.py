@@ -1,7 +1,7 @@
 # -- coding: utf-8 --
 # @Time : 2023/12/27
 # @Author : ykk648
-# @Project : https://github.com/ykk648/face_lib
+
 from cv2box import CVImage, get_path_by_ext, MyFpsCounter, CVVideoLoader
 from tqdm import tqdm
 
