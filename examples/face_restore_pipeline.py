@@ -1,6 +1,6 @@
 # -- coding: utf-8 --
 # @Time : 2022/8/25
-# @LastEdit : 2024/2/7
+# @LastEdit : 2024/2/28
 # @Author : ykk648
 
 from cv2box import CVImage
@@ -11,10 +11,10 @@ from face_alignment import FaceAlignmentAPI
 
 
 class FaceRestorePipe:
-    def __init__(self, show=False):
+    def __init__(self, mode='RestoreFormer', show=False):
         self.show = show
 
-        self.fr = FaceRestore(mode='RestoreFormer')
+        self.fr = FaceRestore(mode=mode)
         self.scrfd = ScrfdAPI(model_name='scrfd_500m_bnkps_shape640x640')
         self.fa = FaceAlignmentAPI(crop_size=512, mode='mtcnn_512')
         self.fm = common_face_mask((512, 512))
@@ -34,6 +34,8 @@ class FaceRestorePipe:
     def forward(self, image_in):
         image_in = CVImage(image_in).bgr
         face_image, mat_rev, roi_box = self.face_detect_and_align(image_in)
+        if face_image is None:
+            return image_in
         face_restore_out = self.face_restore(face_image)
         # face_restore_out = CVImage(face_restore_out).rgb()
         restore_roi = CVImage(None).recover_from_reverse_matrix(face_restore_out / 255,
@@ -56,9 +58,9 @@ if __name__ == '__main__':
     # import cv2
     # from tqdm import tqdm
     #
-    # frp = FaceRestorePipe()
+    # frp = FaceRestorePipe(mode='gfpganv4')
     # video_p = ''
-    # video_out_p = video_p.replace('.mp4', '_RestoreFormer.mp4')
+    # video_out_p = video_p.replace('.mp4', '_gfpganv4.mp4')
     #
     # with CVVideoLoader(video_p) as cvv:
     #     fps = cvv.fps

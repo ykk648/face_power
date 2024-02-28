@@ -1,13 +1,14 @@
 # -- coding: utf-8 --
 # @Time : 2023/12/27
+# @LastEdit : 2024/2/28
 # @Author : ykk648
-# @Project : https://github.com/ykk648/face_lib
+
 from cv2box import CVImage
 import numpy as np
 import cv2
 
 # xseg test
-from face_parsing_test import XsegNet
+from face_parsing import XsegNet
 import onnxruntime as ort
 
 ort.set_default_logger_severity(3)

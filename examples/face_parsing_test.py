@@ -1,9 +1,8 @@
 # -- coding: utf-8 --
 # @Time : 2023/12/27
 # @Author : ykk648
-# @Project : https://github.com/ykk648/face_lib
-from cv2box import CVImage
 
+from cv2box import CVImage
 from face_parsing import FaceParsing
 
 test_img = 'resources/cropped_face/512.jpg'
