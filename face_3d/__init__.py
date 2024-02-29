@@ -2,4 +2,5 @@
 # @Time : 2022/3/29
 # @Author : ykk648
 
-from .face_3d_coeffs import Face3dCoeffs
+from .Deep3DFaceRecon import Face3dCoeffs
+from .DECA import DECA
