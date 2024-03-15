@@ -22,6 +22,7 @@ if __name__ == '__main__':
     scrfd.draw_face()
     print(bboxs_, kps_)
 
-    fa = FaceAlignmentAPI(crop_size=256, mode='mtcnn_512')
+    fa = FaceAlignmentAPI(crop_size=512, mode='mtcnn_512')
     align_img, mat_rev, roi_box = fa.align_single_face(image_in, bboxs_, kps_, apply_roi=True, pad_ratio=0.2)
     CVImage(align_img).show()
+    # CVImage(align_img).save('./align_img.png')

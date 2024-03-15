@@ -1,7 +1,7 @@
 # -- coding: utf-8 --
 # @Time : 2022/8/12
 # @Author : ykk648
-# @Project : https://github.com/ykk648/AI_power
+
 """
 based on https://github.com/iperov/DeepFaceLab/tree/master/models/Model_XSeg
 base model come from https://www.dfldata.cc/forum.php, self trained (private data
@@ -18,18 +18,22 @@ MODEL_ZOO = {
     'xseg_net_private': {
         'model_path': 'private_models/deep_fake/deepfacelab/xseg/xseg_211104_4790000.onnx',
         'input_dynamic_shape': (1, 256, 256, 3),
+    },
+    'xseg_net_neck_private': {
+        'model_path': 'private_models/face_lib/face_parsing/240318_xseg_face_neck_fix.onnx',
+        'input_dynamic_shape': (1, 256, 256, 3),
     }
 }
 
 
 class XsegNet(ModelBase):
-    def __init__(self, model_name='xseg_net_private', provider='gpu'):
+    def __init__(self, model_name='xseg_net', provider='gpu'):
         super().__init__(MODEL_ZOO[model_name], provider)
 
     def forward(self, image_in):
         """
         Args:
-            image_in: CVImage acceptable class
+            image_in: BGR, CVImage acceptable class
         Returns:
         """
         image_in = CVImage(image_in)

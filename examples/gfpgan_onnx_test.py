@@ -1,10 +1,10 @@
 # -- coding: utf-8 --
 # @Time : 2023/12/27
 # @Author : ykk648
-# @Project : https://github.com/ykk648/face_lib
+
 from cv2box import CVImage
 
-from face_restore_test import GFPGAN
+from face_restore import GFPGAN
 
 face_img_p = 'resources/cropped_face/512.jpg'
 fa = GFPGAN(model_type='GFPGANv1.4', provider='gpu')

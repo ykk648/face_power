@@ -1,7 +1,7 @@
 # -- coding: utf-8 --
 # @Time : 2022/1/7
 # @Author : ykk648
-# @Project : https://github.com/ykk648/AI_power
+
 import numpy as np
 from cv2box import CVImage
 from apstone import ModelBase

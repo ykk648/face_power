@@ -10,6 +10,8 @@ from cv2box.utils.math import Normalize
 from .scrfd import SCRFD
 
 # https://github.com/deepinsight/insightface/tree/master/detection/scrfd
+# https://github.com/VNS-CamAI/Inference-Face-Detection-ONNX-SCRFD
+# https://github.com/DefTruth/scrfd.lite.ai.toolkit
 MODEL_ZOO = {
     'scrfd_500m_bnkps_shape640x640': {
         'model_path': 'pretrain_models/face_lib/face_detect/scrfd_onnx/scrfd_500m_bnkps_shape640x640.onnx',

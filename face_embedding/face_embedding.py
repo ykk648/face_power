@@ -13,6 +13,7 @@ def down_sample(target_, size):
 
 
 MODEL_ZOO = {
+    # https://github.com/HuangYG123/CurricularFace
     'CurricularFace': {
         'model_path': 'pretrain_models/face_lib/face_embedding/CurricularFace.onnx'
     },
