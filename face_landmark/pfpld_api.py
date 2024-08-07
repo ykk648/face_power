@@ -29,7 +29,7 @@ class PFPLD(ModelBase):
         """
         Args:
             image_in: CVImage acceptable class
-        Returns:
+        Returns: (1,68,2)
         """
         self.image_in = CVImage(image_in).bgr
         input_image_shape = self.image_in.shape
