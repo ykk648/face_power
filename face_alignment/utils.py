@@ -1,5 +1,6 @@
 # -- coding: utf-8 --
 # @Time : 2023/12/26
+# @LastEdit : 2025/4/25
 # @Author : ykk648
 
 import cv2
@@ -53,11 +54,11 @@ arcface_src_224 = arcface_src * 2
 
 # for talking head
 multi_src_th = np.array([[
-    [187.20187, 149.27705],
-    [324.1236, 148.51973],
-    [256.09793, 227.14795],
-    [199.84871, 307.30597],
-    [313.2362, 306.6788]],  # front
+    [190, 102.4],
+    [342, 102.4],
+    [256, 180],
+    [190, 274],
+    [322, 274]],  # front
 ])
 multi_src_th_close = np.array([[
     [152, 20],

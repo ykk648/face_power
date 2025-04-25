@@ -1,5 +1,6 @@
 # -- coding: utf-8 --
 # @Time : 2023/12/22
+# @LastEdit : 2025/4/25
 # @Author : ykk648
 
 import numpy as np
@@ -58,15 +59,15 @@ class ScrfdAPI:
         if self.tracking:
             if self.last_bboxes_ is None:
                 self.bboxes, self.kpss = self.model.detect_faces(self.image, thresh=nms_thresh, max_num=1,
-                                                                 metric='default')
+                                                                 metric='max', min_face_size=50)
                 self.last_bboxes_ = self.bboxes
             else:
                 self.bboxes, self.kpss = self.model.detect_faces(self.image, thresh=nms_thresh, max_num=0,
-                                                                 metric='default')
+                                                                 metric='max', min_face_size=50)
                 self.bboxes, self.kpss = self.tracking_filter()
         else:
             self.bboxes, self.kpss = self.model.detect_faces(self.image, thresh=nms_thresh, max_num=max_num,
-                                                             metric='default')
+                                                             metric='max', min_face_size=50)
 
         return self.bboxes, self.kpss
 

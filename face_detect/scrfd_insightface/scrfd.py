@@ -1,15 +1,11 @@
-# -*- coding: utf-8 -*-
-# @Organization  : insightface.ai
-# @Author        : Jia Guo
-# @Time          : 2021-05-04
-# @Function      : 
+# -- coding: utf-8 --
+# @Time : 2023/12/22
+# @LastEdit : 2025/4/25
+# @Author : ykk648
 
-# from __future__ import division
-# import datetime
 import numpy as np
 import os.path as osp
 import cv2
-import sys
 
 
 def softmax(z):
@@ -206,7 +202,7 @@ class SCRFD:
                 kpss_list.append(pos_kpss)
         return scores_list, bboxes_list, kpss_list
 
-    def detect_faces(self, img, thresh=0.5, input_size=None, max_num=0, metric='default'):
+    def detect_faces(self, img, thresh=0.5, input_size=None, max_num=0, metric='default', min_face_size=50):
         assert input_size is not None or self.input_size is not None
         input_size = self.input_size if input_size is None else input_size
 
@@ -240,6 +236,13 @@ class SCRFD:
             kpss = kpss[keep, :, :]
         else:
             kpss = None
+
+        # Filter out small faces
+        face_sizes = np.minimum(det[:, 2] - det[:, 0], det[:, 3] - det[:, 1])
+        large_face_mask = face_sizes >= min_face_size
+        det = det[large_face_mask]
+        if kpss is not None:
+            kpss = kpss[large_face_mask]
         if 0 < max_num < det.shape[0]:
             area = (det[:, 2] - det[:, 0]) * (det[:, 3] -
                                               det[:, 1])

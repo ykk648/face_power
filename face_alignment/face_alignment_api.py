@@ -1,5 +1,6 @@
 # -- coding: utf-8 --
 # @Time : 2023/12/26
+# @LastEdit : 2025/4/25
 # @Author : ykk648
 
 from cv2box import CVImage
@@ -39,7 +40,11 @@ class FaceAlignmentAPI:
 
         # in some face copy&paste scene, border replicate will remove black line around bbox
         # warped = cv2.warpAffine(img, mat, (crop_size, crop_size), borderValue=0.0)
-        warped = cv2.warpAffine(img, mat, (crop_size, crop_size), borderMode=cv2.BORDER_REPLICATE)
+        if crop_size is not None:
+            warped = cv2.warpAffine(img, mat, (crop_size, crop_size), flags=cv2.INTER_CUBIC, borderMode=cv2.BORDER_REPLICATE)
+        else:
+            crop_size = img.shape[1]
+            warped = cv2.warpAffine(img, mat, (crop_size, crop_size), flags=cv2.INTER_CUBIC, borderMode=cv2.BORDER_REPLICATE)
         mat_rev = cv2.invertAffineTransform(mat)
         return warped, mat_rev, lmk_after
 
