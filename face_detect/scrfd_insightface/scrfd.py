@@ -127,7 +127,7 @@ class SCRFD:
         input_size = kwargs.get('input_size', None)
         if input_size is not None:
             if self.input_size is not None:
-                print('warning: det_size is already set in scrfd model, ignore')
+                pass
             else:
                 self.input_size = input_size
 
@@ -243,25 +243,29 @@ class SCRFD:
         det = det[large_face_mask]
         if kpss is not None:
             kpss = kpss[large_face_mask]
-        if 0 < max_num < det.shape[0]:
-            area = (det[:, 2] - det[:, 0]) * (det[:, 3] -
-                                              det[:, 1])
+
+        # Always sort by area first
+        area = (det[:, 2] - det[:, 0]) * (det[:, 3] - det[:, 1])
+        if metric == 'max' or det.shape[0] == 0:
+            values = area
+        else:
             img_center = img.shape[0] // 2, img.shape[1] // 2
-            offsets = np.vstack([
-                (det[:, 0] + det[:, 2]) / 2 - img_center[1],
-                (det[:, 1] + det[:, 3]) / 2 - img_center[0]
-            ])
+            offsets = np.vstack([(det[:, 0] + det[:, 2]) / 2 - img_center[1], (det[:, 1] + det[:, 3]) / 2 - img_center[0]])
             offset_dist_squared = np.sum(np.power(offsets, 2.0), 0)
-            if metric == 'max':
-                values = area
-            else:
-                values = area - offset_dist_squared * 2.0  # some extra weight on the centering
-            bindex = np.argsort(
-                values)[::-1]  # some extra weight on the centering
-            bindex = bindex[0:max_num]
-            det = det[bindex, :]
+            values = area - offset_dist_squared * 2.0  # some extra weight on the centering
+
+        # Sort by values (area or area-center weighted)
+        bindex = np.argsort(values)[::-1]
+        det = det[bindex, :]
+        if kpss is not None:
+            kpss = kpss[bindex, :]
+
+        # Apply max_num limit if needed
+        if 0 < max_num < det.shape[0]:
+            det = det[:max_num]
             if kpss is not None:
-                kpss = kpss[bindex, :]
+                kpss = kpss[:max_num]
+
         return det, kpss
 
     def nms(self, dets):
