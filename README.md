@@ -1,3 +1,5 @@
+
+
 ## Intro
 
 Separate from [AI_power](https://github.com/ykk648/AI_power), consists methods/onnx-models for face related missions.
@@ -62,7 +64,7 @@ Models can be found in [huggingface](https://huggingface.co/ykk648/face_lib).
 ### Face Swap
 
 - [FaceFusion](https://modelscope.cn/models/damo/cv_unet-image-face-fusion_damo/)
-- [Hififace](https://johann.wang/HifiFace/)
+- [HifiFace](https://johann.wang/HifiFace/)
 - [InSwapper](https://github.com/deepinsight/insightface)
 
 
